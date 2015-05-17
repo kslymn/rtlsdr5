@@ -66,7 +66,7 @@ class MessageDialog(ViewBase):
 		self.buttons.add(3, 4, 'Kabul', click=self.accept_click, 
 			bg_color=freqshow.ACCEPT_BG)
 		if cancel is not None:
-			self.buttons.add(0, 4, 'İptal', click=self.cancel_click, 
+			self.buttons.add(0, 4, 'Iptal', click=self.cancel_click, 
 				bg_color=freqshow.CANCEL_BG)
 		self.label = ui.render_text(text, size=freqshow.NUM_FONT,
 			fg=freqshow.BUTTON_FG, bg=freqshow.MAIN_BG)
@@ -122,7 +122,7 @@ class NumberDialog(ViewBase):
 		else:
 			
 			self.buttons.add(3, 1, '+/-', click=self.posneg_click)
-		self.buttons.add(3, 3, 'İptal', click=self.cancel_click,
+		self.buttons.add(3, 3, 'Iptal', click=self.cancel_click,
 			bg_color=freqshow.CANCEL_BG)
 		self.buttons.add(3, 4, 'Kabul', click=self.accept_click,
 			bg_color=freqshow.ACCEPT_BG) 
@@ -214,7 +214,7 @@ class SettingsList(ViewBase):
 		
 		centerfreq_text = 'Merkezi Frekans: {0:0.2f} MHz'.format(model.get_center_freq())
 		samplerate_text = 'Sample Rate: {0:0.2f} MHz'.format(model.get_sample_rate())
-		gain_text       = 'Kazanç: {0} dB'.format(model.get_gain())
+		gain_text       = 'Kazanc: {0} dB'.format(model.get_gain())
 		min_text        = 'Min: {0} dB'.format(model.get_min_string())
 		max_text        = 'Max: {0} dB'.format(model.get_max_string())
 		# Butonlarin olusumu
@@ -257,7 +257,7 @@ class SettingsList(ViewBase):
 		self.controller.change_to_settings()
 
 	def gain_click(self, button):
-		self.controller.number_dialog('Kazanç:', 'dB',
+		self.controller.number_dialog('Kazanc:', 'dB',
 			initial=self.model.get_gain(), accept=self.gain_accept, 
 			has_auto=True)
 
@@ -296,7 +296,7 @@ class SpectrogramBase(ViewBase):
 		self.controller = controller
 		self.buttons = ui.ButtonGrid(model.width, model.height, 4, 5)
 		self.buttons.add(0, 0, 'Ayarlar', click=self.controller.change_to_settings)
-		self.buttons.add(3, 0, 'Çıkış', click=self.quit_click,
+		self.buttons.add(3, 0, 'Cikis', click=self.quit_click,
 			bg_color=freqshow.CANCEL_BG)
 		self.overlay_enabled = True
 
@@ -364,7 +364,7 @@ class SpectrogramBase(ViewBase):
 			self.buttons.click(location)
 
 	def quit_click(self, button):
-		self.controller.message_dialog('Çıkış',
+		self.controller.message_dialog('Cikis',
 			accept=self.quit_accept)
 
 	def quit_accept(self):
