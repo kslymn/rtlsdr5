@@ -296,6 +296,7 @@ class SpectrogramBase(ViewBase):
 		self.controller = controller
 		self.buttons = ui.ButtonGrid(model.width, model.height, 4, 5)
 		self.buttons.add(0, 0, 'Ayarlar', click=self.controller.change_to_settings)
+		self.buttons.add(1, 0, 'Mod', click=self.controller.toggle_main, colspan=2)
 		self.buttons.add(3, 0, 'Cikis', click=self.quit_click,
 			bg_color=freqshow.CANCEL_BG)
 		self.overlay_enabled = True
