@@ -1,6 +1,7 @@
 import pygame
 
 
+
 ALIGN_LEFT   = 0.0
 ALIGN_TOP    = 0.0
 ALIGN_CENTER = 0.5
@@ -10,7 +11,7 @@ ALIGN_BOTTOM = 1.0
 
 def align(child, parent, horizontal=ALIGN_CENTER, vertical=ALIGN_CENTER,
 	hpad=0, vpad=0):
-	
+
 	cx, cy, cwidth, cheight = child
 	px, py, pwidth, pheight = parent
 	return (px+(horizontal*pwidth-horizontal*cwidth)+hpad,
@@ -24,9 +25,9 @@ def get_font(size):
 	return font_cache[size]
 
 def render_text(text, size=33, fg=(255, 255, 255), bg=(0, 0, 0)):
-	
+
 	if bg is not None:
-		
+	
 		return get_font(size).render(text, True, fg, bg)
 	else:
 		
@@ -34,7 +35,7 @@ def render_text(text, size=33, fg=(255, 255, 255), bg=(0, 0, 0)):
 
 
 class Button(object):
-	
+
 	fg_color     = (255, 255, 255)
 	bg_color     = (60, 60, 60)
 	border_color = (200, 200, 200)
@@ -61,7 +62,7 @@ class Button(object):
 		self.label_pos = align(self.label.get_rect(), self.rect)
 
 	def render(self, screen):
-		
+	
 		screen.fill(self.bg_color, self.rect)
 		pygame.draw.rect(screen, self.border_color, self.rect, self.border_px)
 		screen.blit(self.label, self.label_pos)
@@ -77,7 +78,7 @@ class Button(object):
 
 class ButtonGrid(object):
 	def __init__(self, width, height, cols, rows):
-		
+	
 		self.col_size = width / cols
 		self.row_size = height / rows
 		self.buttons = []
@@ -91,10 +92,12 @@ class ButtonGrid(object):
 		self.buttons.append(Button((x,y,width,height), text, **kwargs))
 
 	def render(self, screen):
-        		for button in self.buttons:
+		
+	
+		for button in self.buttons:
 			button.render(screen)
 
 	def click(self, location):
-		
+	
 		for button in self.buttons:
 			button.click(location)
